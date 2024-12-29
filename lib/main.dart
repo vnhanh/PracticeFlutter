@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'add_marker/home.dart';
+import 'features/dashboard/screens/dashboard_screen.dart';
 
 void main() {
-  runApp(const HomeScreen());
+  runApp(const DashboardScreen());
 }
