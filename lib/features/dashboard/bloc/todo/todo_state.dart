@@ -1,6 +1,5 @@
 import 'package:demo_crypto_checker/core/network/network_model.dart';
 import 'package:equatable/equatable.dart';
-
 import '../../models/todo_model.dart';
 
 abstract class TodoState extends Equatable {
