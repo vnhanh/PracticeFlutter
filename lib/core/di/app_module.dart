@@ -4,5 +4,5 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class AppDiModule {
   @preResolve
-  Dio get dio => Dio();
+  Future<Dio> get dio async => Dio();
 }

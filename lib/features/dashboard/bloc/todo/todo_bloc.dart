@@ -1,7 +1,7 @@
-
 import 'package:demo_crypto_checker/core/network/api_service.dart';
 import 'package:demo_crypto_checker/features/dashboard/bloc/todo/todo_event.dart';
 import 'package:demo_crypto_checker/features/dashboard/bloc/todo/todo_state.dart';
+import 'package:demo_crypto_checker/features/dashboard/models/todo_model.dart';
 import 'package:demo_crypto_checker/features/dashboard/repositories/todo_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -25,7 +25,17 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   _onStart(TodoEvent event, Emitter<TodoState> emit) async {
     emit(const LoadingTodoState());
     try {
-      final listOfTodoItems = await _repository.getListOfItems(123);
+      // final listOfTodoItems = await _repository.getListOfItems(123);
+      await Future.delayed(const Duration(seconds: 3));
+      final listOfTodoItems = <TodoModel>[
+        TodoModel(
+          id: 1,
+          title: "household",
+          description: "clean floor",
+          timeStamp: DateTime.now().microsecondsSinceEpoch,
+          state: TodoEnumState.idle,
+        )
+      ];
       emit(LoadSuccessTodoState(items: listOfTodoItems));
     } catch (e) {
       print(e);

@@ -1,7 +1,8 @@
+import 'package:demo_crypto_checker/core/di/injection.config.dart';
 import 'package:injectable/injectable.dart';
 import 'package:get_it/get_it.dart';
 
-// final GetIt getIt = GetIt.instance;
+final GetIt getIt = GetIt.instance;
 
 @InjectableInit()
-Future<void> configureDependencies() async => await $initGetIt(getIt);
+void configureDependencies() => getIt.init();

@@ -1,5 +1,3 @@
-
-import 'package:demo_crypto_checker/features/dashboard/bloc/todo/todo_bloc.dart';
 import 'package:flutter/foundation.dart';
 
 /// Class defines properties of a TODO item
@@ -11,21 +9,21 @@ class TodoModel {
   final String title;
   final String description;
   final int timeStamp;
-  final TodoState state;
+  final TodoEnumState state;
 
   const TodoModel({
     required this.id,
     required this.title,
     required this.description,
     required this.timeStamp,
-    required this.state
+    required this.state,
   });
 
   factory TodoModel.fromMap(Map<String, dynamic> map) {
     final itemId = map['id'] as int?;
 
     final stateResponse = map['state'] as int? ?? -1;
-    final state = TodoState.fromInt(stateResponse);
+    final state = TodoEnumState.fromInt(stateResponse);
     return TodoModel(
         id: itemId,
         title: map['title'] as String,
@@ -36,15 +34,14 @@ class TodoModel {
   }
 }
 
-enum TodoState {
+enum TodoEnumState {
   undefined(-1), idle(0), inProgress(1), done(2), suspend(3), cancelled(4);
 
   final int value;
-  const TodoState(this.value);
+  const TodoEnumState(this.value);
 
-  factory TodoState.fromInt(int value) {
-    if (value < 0 || value >= values.length) return TodoState.undefined;
-    final bloc = TodoBloc();
+  factory TodoEnumState.fromInt(int value) {
+    if (value < 0 || value >= values.length) return TodoEnumState.undefined;
     return values[value];
   }
 }
